@@ -10,15 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-        name: Setup dotnet
+        name: Setup node
       - uses: actions/setup-dotnet@v1
         name: Setup dotnet
         with:
           dotnet-version: ${{ env.dotnetSdkVersion }}' 
-- run: dotnet build <my project>
-      - uses: actions
-        with:
-          node-version: "14"
-      - run: npm install
-      - 
+
 
