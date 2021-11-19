@@ -22,9 +22,9 @@ jobs:
       - run: gulp
       - run: 'echo "${{env.GITHUB_WORKFLOW}}, ${{env.GITHUB_RUN_ID}}, ${{env.GITHUB_RUN_NUMBER}}" > buildinfo.txt'
         working-directory: ${{ env.wwwrootDir }}
-      - run: dotnet build --configuration ${{env.buildConfiguration}} --projects "**/*.csproj"
+      - run: dotnet build **/*.csproj --configuration ${{env.buildConfiguration}}
         name: "Build the project - ${{env.buildConfiguration}}"
-      - run: dotnet publish --no-build --configuration ${{env.buildConfiguration}} --output ${{github.workspace}}
+      - run: dotnet publish **/*.csproj --no-build --configuration ${{env.buildConfiguration}} --output ${{github.workspace}}
       - uses: actions/upload-artifact@v2
         with:
           name: build-artifact
