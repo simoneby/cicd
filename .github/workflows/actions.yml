@@ -11,9 +11,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         name: Setup node
+      - name: Gulp Runner
+        uses: 2KAbhishek/gulp-runner@v0.3
       - uses: actions/setup-dotnet@v1
         name: Setup dotnet
         with:
           dotnet-version: ${{ env.dotnetSdkVersion }}
       - run: npm install
       - run: "./node_modules/.bin/node-sass ${{env.wwwrootDir}} --output ${{env.wwwrootDir}}"
+      - run: gulp
