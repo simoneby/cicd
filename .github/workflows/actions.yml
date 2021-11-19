@@ -4,6 +4,7 @@ env:
   buildConfiguration: "Release"
   wwwrootDir: "Tailspin.SpaceGame.Web/wwwroot"
   dotnetSdkVersion: "5.x"
+  artifactDir: "~/artifact"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,8 +25,9 @@ jobs:
         working-directory: ${{ env.wwwrootDir }}
       - run: dotnet build **/*.csproj --configuration ${{env.buildConfiguration}}
         name: "Build the project - ${{env.buildConfiguration}}"
-      - run: dotnet publish **/*.csproj --no-build --configuration ${{env.buildConfiguration}} --output ${{github.workspace}}
+        run: mkdir ${{env.artifactDir}}
+      - run: dotnet publish **/*.csproj --no-build --configuration ${{env.buildConfiguration}} --output ${{env.artifactDir}}
       - uses: actions/upload-artifact@v2
         with:
           name: build-artifact
-          path: ${{github.workspace}}
+          path: ${{env.artifactDir}}
