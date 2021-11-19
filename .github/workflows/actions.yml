@@ -24,12 +24,8 @@ jobs:
         working-directory: ${{ env.wwwrootDir }}
       - run: dotnet build --configuration ${{env.buildConfiguration}} --projects "**/*.csproj"
         name: "Build the project - ${{env.buildConfiguration}}"
-      - run: dotnet publish |
-          --projects '**/*.csproj'
-          --no-build |
-          --configuration ${{env.buildConfiguration}} |
-          --output ${{github.workspace}}
+      - run: dotnet publish --projects '**/*.csproj' --no-build --configuration ${{env.buildConfiguration}} --output ${{github.workspace}}
       - uses: actions/upload-artifact@v2
         with:
-          name: build
+          name: build-artifact
           path: ${{github.workspace}}
