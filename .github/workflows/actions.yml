@@ -20,3 +20,7 @@ jobs:
       - run: npm install
       - run: "./node_modules/.bin/node-sass ${{env.wwwrootDir}} --output ${{env.wwwrootDir}}"
       - run: gulp
+      - run: 'echo "${{env.GITHUB_WORKFLOW}}, ${{env.GITHUB_RUN_ID}}, ${{env.GITHUB_RUN_NUMBER}}" > buildinfo.txt'
+        working-directory: { { env.wwwrootDir } }
+      - run: dotnet build --configuration ${{env.buildConfiguration}}
+        name: "Build the project - ${{buildConfiguration}"
