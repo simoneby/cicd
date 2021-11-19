@@ -33,8 +33,14 @@ steps:
     workingDirectory: $(wwwrootDir)
 
   - task: DotNetCoreCLI@2
+    displayName: "Restore project dependencies"
+    inputs:
+      command: "restore"
+      projects: "**/*.csproj"
+
+  - task: DotNetCoreCLI@2
     displayName: "Build the project - $(buildConfiguration)"
     inputs:
       command: "build"
-      arguments: "--configuration $(buildConfiguration)"
+      arguments: "--no-restore --configuration $(buildConfiguration)"
       projects: "**/*.csproj"
