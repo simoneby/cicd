@@ -3,7 +3,7 @@ on: [push]
 env:
   buildConfiguration: "Release"
   wwwrootDir: "Tailspin.SpaceGame.Web/wwwroot"
-  dotnetSdkVersion: "5.x
+  dotnetSdkVersion: "5.x"
 jobs:
   job:
     runs-on: ubuntu-latest
@@ -12,5 +12,6 @@ jobs:
       - uses: actions/setup-node@v2
         name: Setup node
       - uses: actions/setup-dotnet@v1
+        name: Setup dotnet
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: ${{ env.dotnetSdkVersion }}
