@@ -1,0 +1,24 @@
+name: learn-github-actions
+on: [push]
+env:
+  buildConfiguration: "Release"
+  wwwrootDir: "Tailspin.SpaceGame.Web/wwwroot"
+  dotnetSdkVersion: "5.x
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        name: Setup dotnet
+      - uses: actions/setup-dotnet@v1
+        name: Setup dotnet
+        with:
+          dotnet-version: ${{ env.dotnetSdkVersion }}' 
+- run: dotnet build <my project>
+      - uses: actions
+        with:
+          node-version: "14"
+      - run: npm install
+      - 
+
