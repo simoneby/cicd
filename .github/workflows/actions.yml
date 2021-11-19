@@ -15,3 +15,5 @@ jobs:
         name: Setup dotnet
         with:
           dotnet-version: ${{ env.dotnetSdkVersion }}
+      -run: npm install
+      -run: "./node_modules/.bin/node-sass ${{env.wwwrootDir}} --output ${{env.wwwrootDir}}"
