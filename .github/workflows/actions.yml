@@ -5,7 +5,7 @@ env:
   wwwrootDir: "Tailspin.SpaceGame.Web/wwwroot"
   dotnetSdkVersion: "5.x"
 jobs:
-  job:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,5 +22,14 @@ jobs:
       - run: gulp
       - run: 'echo "${{env.GITHUB_WORKFLOW}}, ${{env.GITHUB_RUN_ID}}, ${{env.GITHUB_RUN_NUMBER}}" > buildinfo.txt'
         working-directory: ${{ env.wwwrootDir }}
-      - run: dotnet build --configuration ${{env.buildConfiguration}}
+      - run: dotnet build --configuration ${{env.buildConfiguration}} --projects "**/*.csproj"
         name: "Build the project - ${{env.buildConfiguration}}"
+      - run: dotnet publish |
+          --projects '**/*.csproj'
+          --no-build |
+          --configuration ${{env.buildConfiguration}} |
+          --output ${{github.workspace}}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: ${{github.workspace}}
