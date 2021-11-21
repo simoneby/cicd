@@ -27,6 +27,7 @@ jobs:
         name: "Build the project - ${{env.buildConfiguration}}"
       - run: dotnet build **/*.Tests.csproj --configuration ${{env.buildConfiguration}}
         name: "Build the test project - ${{env.buildConfiguration}}"
+      - run: dotnet test --configuration ${{env.buildConfiguration}}
       - run: mkdir -p ${{env.artifactDir}}/${{env.buildConfiguration}}
       - run: dotnet publish **/*.csproj --no-build --configuration ${{env.buildConfiguration}} --output ${{env.artifactDir}}/${{env.buildConfiguration}}
       - uses: actions/upload-artifact@v2
