@@ -25,7 +25,7 @@ jobs:
         working-directory: ${{ env.wwwrootDir }}
       - run: dotnet build **/*.Web.csproj --configuration ${{env.buildConfiguration}}
         name: "Build the project - ${{env.buildConfiguration}}"
-      - run: dotnet build **/*.Test.csproj --configuration ${{env.buildConfiguration}}
+      - run: dotnet build **/*.Tests.csproj --configuration ${{env.buildConfiguration}}
         name: "Build the test project - ${{env.buildConfiguration}}"
       - run: mkdir -p ${{env.artifactDir}}/${{env.buildConfiguration}}
       - run: dotnet publish **/*.csproj --no-build --configuration ${{env.buildConfiguration}} --output ${{env.artifactDir}}/${{env.buildConfiguration}}
