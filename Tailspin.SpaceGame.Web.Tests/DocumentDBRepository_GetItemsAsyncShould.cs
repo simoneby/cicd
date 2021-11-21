@@ -48,7 +48,8 @@ namespace Tests
             IEnumerable<Score> scores = scoresTask.Result;
 
             // Verify that each score's game region matches the provided game region.
-            Assert.That(scores + 1, Is.All.Matches<Score>(score => score.GameRegion == gameRegion));
+            Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == "gameRegion"));
         }
     }
+
 }
