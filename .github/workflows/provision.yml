@@ -1,6 +1,9 @@
 name: deploy-website
 
 on:
+  push:
+    branches:
+      - "*"
   workflow_dispatch:
 
 env:
