@@ -53,8 +53,25 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2020-06-01' = {
   sku: environmentConfigurationMap[environmentType].appServicePlan.sku
 }
 
-resource appServiceApp 'Microsoft.Web/sites@2020-06-01' = {
-  name: appServiceAppName
+resource appServiceAppAction 'Microsoft.Web/sites@2020-06-01' = {
+  name: '${appServiceAppName}-pipeline'
+  location: location
+  properties: {
+    serverFarmId: appServicePlan.id
+    httpsOnly: true
+    siteConfig: {
+      appSettings: [
+        {
+          name: 'StorageAccountConnectionString'
+          value: StorageAccountConnectionString
+        }
+      ]
+    }
+  }
+}
+
+resource appServiceAppPipeline 'Microsoft.Web/sites@2020-06-01' = {
+  name: '${appServiceAppName}-action'
   location: location
   properties: {
     serverFarmId: appServicePlan.id
