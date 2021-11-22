@@ -1,6 +1,10 @@
 name: deploy-website
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 env:
   AZURE_RESOURCEGROUP_NAME: kp2021s4-vebjornmalmin-rg
