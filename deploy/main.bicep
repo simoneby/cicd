@@ -14,7 +14,7 @@ param resourceNameSuffix string = uniqueString(resourceGroup().id)
 
 var appServiceAppName = 'kp-app-${resourceNameSuffix}'
 var appServicePlanName = 'kp-app-plan'
-var StorageAccountName = 'storage-${resourceNameSuffix}'
+var StorageAccountName = 'storage${resourceNameSuffix}'
 
 // Define the SKUs for each component based on the environment type.
 var environmentConfigurationMap = {
