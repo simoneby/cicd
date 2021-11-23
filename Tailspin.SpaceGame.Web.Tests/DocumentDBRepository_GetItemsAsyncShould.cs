@@ -51,4 +51,5 @@ namespace Tests
             Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == gameRegion));
         }
     }
+
 }
