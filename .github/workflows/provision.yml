@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_RESOURCEGROUP_NAME: #REPLACE
+  AZURE_RESOURCEGROUP_NAME: kp2021s4-simonebystadhagen-rg
   ENVIRONMENT: nonprod
 
 jobs:
@@ -24,3 +24,4 @@ jobs:
           resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
           template: ./deploy/main.bicep
           parameters: environmentType=${{ env.ENVIRONMENT }}
+
