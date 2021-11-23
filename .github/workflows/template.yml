@@ -25,7 +25,7 @@ jobs:
         run: npm install
       
       - name: Compile Sass assets
-        run: "./node_modules/.bin/node-sass ${{env.wwwrootDir}} --output $(wwwrootDir)"
+        run: "./node_modules/.bin/node-sass ${{env.wwwrootDir}} --output ${{env.wwwrootDir}}"
       
       - name: Run gulp tasks
         run: gulp
