@@ -30,8 +30,12 @@ jobs:
       - name: Run gulp tasks
         run: gulp
 
-      - name: Build and publish
+      - name: Run tests
+        run: dotnet test  
+
+      - name: Build, test and publish
         run: |
           dotnet build
           dotnet publish --configuration ${{env.buildConfiguration}} --output ~
+
       
