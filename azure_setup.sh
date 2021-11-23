@@ -13,9 +13,10 @@ az group create -l norwayeast -n $RESOURCE_GROUP_ID
 filename="./.github/workflows/provision.yml"
 
 # Take the search string
-search='#REPLACE'
+search='simonebystadhagen'
 
 sed -i '' "s/$search/$RESOURCE_GROUP_ID/" $filename
+
 
 
 
