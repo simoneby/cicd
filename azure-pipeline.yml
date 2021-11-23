@@ -44,6 +44,9 @@ steps:
       arguments: '--configuration $(buildConfiguration)'
     displayName: 'dotnet build $(buildConfiguration)'
 
+  - script: "dotnet test"
+    displayName: "Run tests" 
+
   - task: DotNetCoreCLI@2
     inputs:
       command: publish
@@ -55,3 +58,5 @@ steps:
     inputs:
       pathToPublish: $(Build.ArtifactStagingDirectory)
       artifactName: MyBuildOutputs
+
+     
