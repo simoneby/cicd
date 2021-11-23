@@ -32,6 +32,6 @@ jobs:
 
       - name: Build and publish
         run: |
-          build --configuration ${{env.buildConfiguration}}
+          build
           publish --configuration ${{env.buildConfiguration}} --output ~
       
