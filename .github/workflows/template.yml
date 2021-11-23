@@ -32,6 +32,6 @@ jobs:
 
       - name: Build and publish
         run: |
-          build
-          publish --configuration ${{env.buildConfiguration}} --output ~
+          dotnet build
+          dotnet publish --configuration ${{env.buildConfiguration}} --output ~
       
