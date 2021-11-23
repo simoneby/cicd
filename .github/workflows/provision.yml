@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_RESOURCEGROUP_NAME: kp2021s4-vebjornmalmin-rg
+  AZURE_RESOURCEGROUP_NAME: kp2021s4-simonebystadhagen-rg
   ENVIRONMENT: nonprod
 
 jobs:
