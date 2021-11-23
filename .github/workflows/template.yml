@@ -1,12 +1,37 @@
 name: learn-github-actions
 on: [push]
+env: 
+  buildConfiguration: "Release"
+  wwwrootDir: "Tailspin.SpaceGame.Web/wwwroot"
+  dotnetSdkVersion: "5.x"
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set Up Node
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: npm install -g bats
-      - run: bats -v
+
+      - name: Use .NET SDK 
+        uses: actions/setup-dotnet@v1
+        with: 
+          version: "${{env.dotnetSdkVersion}}"
+
+      - name: Run npm install
+        run: npm install
+      
+      - name: Compile Sass assets
+        run: "./node_modules/.bin/node-sass ${{env.wwwrootDir}} --output $(wwwrootDir)"
+      
+      - name: Run gulp tasks
+        run: gulp
+
+      - name: Build and publish
+        run: |
+          build --configuration ${{env.buildConfiguration}}
+          publish
+      
